@@ -1,6 +1,6 @@
 const http = require('http');
 const PORT = process.env.PORT || 3002; // Utilisation correcte de process.env
-require('dotenv').config();
+require('dotenv').config(); // ✅ Chargement des variables d'environnement
 const { app } = require('./app'); // Extraction correcte de `app`
 const server = http.createServer(app); // ✅ Crée d'abord `server`
 

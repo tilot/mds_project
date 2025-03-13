@@ -1,6 +1,8 @@
 // 📌 Import des modules nécessaires
 const express = require('express'); // Framework Express pour créer des routes API
 const { Sequelize, DataTypes } = require('sequelize'); // ORM Sequelize pour interagir avec MySQL
+require('dotenv').config(); // Charge les variables d'environnement
+const mysql = require('mysql2');
 
 // 📌 Création de l'application Express
 const app = express();
@@ -15,7 +17,7 @@ app.use((req, res, next) => {
 });
 
 // 📌 Connexion à la base de données MySQL
-const sequelize = new Sequelize('projet_MDS', 'root', 'root', {
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
     host: 'localhost',   // Serveur de la base de données
     dialect: 'mysql',    // On précise qu'on utilise MySQL
     port: 3306           // Port par défaut de MySQL
